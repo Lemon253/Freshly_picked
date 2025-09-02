@@ -1,0 +1,62 @@
+.header {
+    background: #000;
+    margin: auto 0;
+}
+
+/* メインタグの設定 */
+
+.header__inner {
+    margin: 0 auto;
+    padding: 10px 5px 5px 15px;
+    /* max-width: 1230px; */
+}
+
+.header-utilities {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.header-utilities nav {
+    width: 18%;
+}
+
+.header__link {
+    margin: 0px 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-nav__link {
+    margin: 0px 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-nav__link--create {
+    margin: 0px 10px;
+    color: #fff;
+    background-color: red;
+    text-decoration: none;
+}
+
+.header-nav__button {
+    border: none;
+    background: transparent;
+    color: yellow;
+    font-size: 16px;
+    cursor: pointer;
+}

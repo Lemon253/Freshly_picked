@@ -1,0 +1,23 @@
+.flex-item {
+    display: flex;
+    margin: 20px 0px 0px 0px;
+}
+
+.item__image {
+    margin: 0px 20px;
+    max-width: 50%;
+    overflow: hidden;
+
+}
+
+.item__right {
+    display: flex;
+    justify-content: center;
+}
+
+.item-content {
+    display: inline-block;
+    max-width: 50%;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
