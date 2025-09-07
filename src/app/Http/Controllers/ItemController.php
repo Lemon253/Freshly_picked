@@ -17,15 +17,13 @@ class ItemController extends Controller
     }
 
     //商品詳細用
-    /*
     public function item(string $id)
     {
         //itemを検索
-        //$item = Item::find($id);
-        //compactの意味
+        $item = Product::find($id);
         return view('item', compact('item'));
     }
-    */
+    
 
 
     //パラメータ取得
