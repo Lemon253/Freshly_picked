@@ -14,3 +14,4 @@ use App\Http\Controllers\ItemController;
 */
 
 Route::get('/', [ItemController::class, 'index']);
+Route::post('/store', [ItemController::class, 'store'])->name('store');

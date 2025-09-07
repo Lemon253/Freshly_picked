@@ -9,6 +9,11 @@ class Season extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
+
     //リレーションの設定
     public function products()
     {

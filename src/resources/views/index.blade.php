@@ -17,20 +17,21 @@
         <div class="contents__left">
             検索欄とカテゴリ選択
         </div>
+        @foreach($products as $product)
         <div class="card">
-
             <div class="card__image">
                 <!-- imageのurl指定 -->
+                <img src="{{ asset('storage/img/' . $product->image)}}" />
             </div>
             <!-- </a> -->
             <div class="card__content">
                 <div class="card__content-common">
-                    <div class="card__buy">
-                    </div>
+                    <div class="card__name">{{ $product->name }}</div>
+                    <div class="card__price">¥{{ $product->price }}</div>
                 </div>
             </div>
         </div>
-
+        @endforeach
     </div>
 </div>
 @endsection

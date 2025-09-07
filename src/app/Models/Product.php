@@ -9,6 +9,13 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'price',
+        'image',
+        'description'
+    ];
+
     //リレーションの設定
     public function seasons()
     {
