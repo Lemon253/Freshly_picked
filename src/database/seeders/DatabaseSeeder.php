@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // 作成したシーダファイルの登録
+        $this->call([
+            SeasonsTableSeeder::class,
+            ProductsTableSeeder::class,
+        ]);
     }
 }
