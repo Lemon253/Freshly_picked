@@ -17,6 +17,7 @@ class ItemController extends Controller
     }
 
     //商品詳細用
+    /*
     public function item(string $id)
     {
         //itemを検索
@@ -24,6 +25,7 @@ class ItemController extends Controller
         //compactの意味
         return view('item', compact('item'));
     }
+    */
 
 
     //パラメータ取得
