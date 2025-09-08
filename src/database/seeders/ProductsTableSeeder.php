@@ -119,7 +119,7 @@ class ProductsTableSeeder extends Seeder
             'id' => 10,
             'name' => 'メロン',
             'price' => 900,
-            'image' => 'banana.png',
+            'image' => 'melon.png',
             'description' => '香りがよくジューシーで品のある甘さが人気のメロンスムージー。カリウムが多く含まれているためむくみ解消効果も抜群です。もぎたてフルーツのスムージーをお召し上がりください！',
             'created_at' => now(),
             'updated_at' => now(),
