@@ -25,14 +25,15 @@
                     <img src="{{ asset('storage/img/' . $product->image)}}" />
                 </div>
             </a>
-                <div class="card__content">
-                    <div class="card__content-common">
-                        <div class="card__name">{{ $product->name }}</div>
-                        <div class="card__price">¥{{ $product->price }}</div>
-                    </div>
+            <div class="card__content">
+                <div class="card__content-common">
+                    <div class="card__name">{{ $product->name }}</div>
+                    <div class="card__price">¥{{ $product->price }}</div>
                 </div>
+            </div>
         </div>
         @endforeach
     </div>
+    {{ $products->links() }}
 </div>
 @endsection
