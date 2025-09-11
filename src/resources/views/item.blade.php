@@ -5,28 +5,66 @@
 @endsection
 
 @section('content')
+<!-- 中身の確認 -->
+<!-- <?php print_r($item) ?> -->
+
 <div class="flex-item">
-    <div class="item__left">
-        <div class="item-image">
-            <!-- 画像の参照元指定 -->
-            <img src="{{ asset('storage/' . $item->image_url)}}" />
-        </div>
+    <div class="item-link">
+        <a class="button-back" href="{{ route('products') }}">商品一覧</a>
+        <p>{{ $item->name }}</p>
     </div>
-    <div class="item__right">
-        <div class="item-content">
-            <div class="item__title">
-                <h2>{{ $item->name }}</h2>
+    <form class="item-edit" action="{{ route('items.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="item__left">
+            <!-- 画像アップロード用のformが必要？ -->
+            <div class="item-image">
+                <!-- 画像の参照元指定 -->
+                <img src="{{ asset('storage/img/' . $item->image)}}" alt="商品画像" />
             </div>
-            <div class="item__price">¥1000</div>
-            <div class="item__price">¥{{ $item->price }}税込）送料込み</div>
-            <a href="/item">
-                <div class="buy">商品を購入する</div>
-            </a>
+            <div class="select-button">
+                <label for="image_file">ファイルを選択</label>
+                <input type="file" id="image_file" name="image" style="display:none;">
+                <span>{{ $item->image }}</span>
+            </div>
         </div>
-        <div class="item-explanation">
-            <h2>商品の説明</h2>
-            <p>test</p>
+        <div class="item-right">
+            <div class="item-name">
+                <label for="item-ttl-name">商品名</label>
+                <input type="text" class="item-edit__name" id="name" name="name" value="{{ $item->name }}">
+            </div>
+            <div class="item-price">
+                <label for="item-ttl-price">値段</label>
+                <input type="text" class="item-edit__price" id="price" name="price" value="{{ $item->price }}">
+            </div>
+            <div class="item-season">
+                <label for="item-ttl-season">季節</label><br>
+                @foreach($seasons as $season)
+                <input type="checkbox"
+                    name="seasons[]"
+                    value="{{ $season->id }}"
+                    {{ $item->seasons->contains($season->id) ? 'checked' : '' }}>
+                {{ $season->name }}
+                @endforeach
+            </div>
         </div>
-    </div>
+        <div class="item-bottom">
+            <div class="item-explanation">
+                <label for="item-explain">商品の説明</label><br>
+                <textarea class="item-edit__description" id="description" name="description">{{ $item->description }}
+                </textarea>
+            </div>
+            <div class="item-bottom__flex">
+                <a class="button-back" href="{{ route('products') }}">戻る</a>
+                <button type="submit" class="button-update">変更を保存</button>
+            </div>
+        </div>
+    </form>
+    <form action="{{ route('items.destroy', $item->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="button-delete">削除</button>
+    </form>
+
 </div>
 @endsection
