@@ -9,7 +9,7 @@
     <div class="flex__header">
         <h2 class="flex__header-ttl">商品一覧</h2>
         <div class="flex__header__create-button">
-            <a href="/item" class="create-button__link">購入に進む</a>
+            <a href="/register" class="create-button__link">+商品を追加</a>
         </div>
 
     </div>
