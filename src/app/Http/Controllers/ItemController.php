@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\Season;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
-//use App\Http\Requests\ItemRequest;
+use App\Http\Requests\ItemRequest;
 
 
 class ItemController extends Controller
@@ -85,12 +85,40 @@ class ItemController extends Controller
     }
 
     //データのupdate
-    //public function update(ItemRequest $request, $id)
-    public function update(Request $request, $id)
+    public function update(ItemRequest $request, $id)
     {
         $item = Product::findOrFail($id);
-        $item->update($request->only(['name', 'price', 'description', 'image']));
+        // 更新するデータを一つの配列にまとめる
+        $updateData = $request->only(['name', 'price', 'description']);
 
+        if ($request->hasFile('image')) {
+            // アップロードされた元のファイル名を取得
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = $originalName;
+            $counter = 1;
+
+            // 指定したディレクトリに同じファイル名が存在するかチェック
+            while (Storage::disk('public')->exists('img/' . $filename)) {
+                // ファイル名と拡張子を分割
+                $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+                $baseName = pathinfo($originalName, PATHINFO_FILENAME);
+
+                // "コピー(数字)" を追加してファイル名を再生成
+                $filename = "{$baseName}_({$counter}).{$extension}";
+                $counter++;
+            }
+            // `storeAs`メソッドでファイル名を指定して保存
+            $path = $request->file('image')->storeAs('img', $filename, 'public');
+
+            //最終的なファイル名
+            $filename = basename($path);
+
+            //配列[image]を追加
+            $updateData['image'] = $filename;
+
+            // データベースを一度だけ更新
+            $item->update($updateData);
+        }
         // 季節の紐付けを更新
         $item->seasons()->sync($request->input('seasons', []));
 
