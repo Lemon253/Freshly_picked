@@ -27,7 +27,7 @@ class ItemRequest extends FormRequest
             //
             'name' => ['required'],
             'price' => ['required', 'integer', 'min:0', 'max:10000'],
-            'seasons' => ['required'],
+            'seasons' => ['required', 'array', 'min:1'],
             'description' => ['required', 'max:120'],
             'image' => ['required', 'mimes:png,jpeg'],
 

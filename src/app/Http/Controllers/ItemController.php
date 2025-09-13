@@ -36,7 +36,7 @@ class ItemController extends Controller
     }
 
     //商品登録処理
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         //フォームデータ受け取り
         $parameters = $request->only([

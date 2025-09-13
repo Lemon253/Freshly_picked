@@ -57,9 +57,9 @@
                     <label for="item-ttl-season">季節</label><br>
                     @foreach($seasons as $season)
                     <input type="checkbox"
-                        name="seasons[]"
+                        name="seasons"
                         value="{{ $season->id }}"
-                        {{ in_array($season->id, old('seasons', [])) || $item->seasons->contains($season->id) ? 'checked' : '' }}>
+                        {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}>
                     {{ $season->name }}
                     @endforeach
                 </div>
