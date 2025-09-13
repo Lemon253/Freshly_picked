@@ -14,6 +14,7 @@ use App\Http\Controllers\ItemController;
 */
 
 Route::get('/', [ItemController::class, 'index'])->name('products.index');
+Route::get('/products/search', [ItemController::class, 'search'])->name('items.search');
 Route::get('/items/{id}', [ItemController::class, 'item'])->name('item');
 Route::put('/items/{id}', [ItemController::class, 'update'])->name('items.update');
 Route::delete('/items/{id}', [ItemController::class, 'destroy'])->name('items.destroy');

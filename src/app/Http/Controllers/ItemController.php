@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Season;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+//use App\Http\Requests\ItemRequest;
+
 
 class ItemController extends Controller
 {
@@ -82,6 +85,7 @@ class ItemController extends Controller
     }
 
     //データのupdate
+    //public function update(ItemRequest $request, $id)
     public function update(Request $request, $id)
     {
         $item = Product::findOrFail($id);
@@ -92,6 +96,33 @@ class ItemController extends Controller
 
         return redirect()->route('item', $id)->with('success', '商品を更新しました');
     }
+
+    public function search(Request $request)
+    {
+        // クエリビルダを開始
+        $products = Product::query();
+
+        // 検索キーワードで絞り込み
+        if ($request->has('search') && $request->input('search') != '') {
+            $products->where('name', 'like', '%' . $request->input('search') . '%');
+        }
+
+        // 価格順で並べ替え
+        if ($request->has('sort')) {
+            if ($request->input('sort') === 'asc' || $request->input('sort') === 'desc') {
+                $products->orderBy('price', $request->input('sort'));
+            }
+        }
+
+        //ページネーションの設定
+        $perPage = 6; // 例: 1件表示
+        $products = $products->paginate($perPage);
+        // ページネーションリンクに検索条件を引き継ぐ
+        $products->appends($request->except('page'));
+
+        return view('index', compact('products'));
+    }
+
 
     //データの削除
     public function destroy(string $id)

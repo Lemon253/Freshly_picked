@@ -14,16 +14,29 @@
 @section('content')
 <div class="flex__item">
     <div class="flex__header">
-        <h2 class="flex__header-ttl">商品一覧</h2>
+        <h1 class="flex__search-ttl">商品一覧</h1>
         <div class="flex__header__create-button">
             <a href="/register" class="create-button__link">+商品を追加</a>
         </div>
-
     </div>
     <div class="contents">
         <div class="contents__left">
-            検索欄とカテゴリ選択
+            <form class="search-form" action="{{ route('items.search') }}" method="get">
+                <div class="search-form__item">
+                    <input class="search-form__item-input" type="text" name="search" @if(session('searches.search')) value="{{ session('searches.search') }}" @endif />
+                    <h3 class="search-form-sort-ttl">価格順で表示</h3>
+                    <select class="search-form__item-select-sort" name="sort">
+                        <option value="" @if(request('sort')=='' ) selected @endif>価格で並べ替え</option>
+                        <option value="asc" @if(request('sort')=='asc' ) selected @endif>低い順に表示</option>
+                        <option value="desc" @if(request('sort')=='desc' ) selected @endif>高い順に表示</option>
+                    </select>
+                </div>
+                <div class="search-form__button">
+                    <button class="search-form__button-submit" type="submit" name="submit" value="submit">検索</button>
+                </div>
+            </form>
         </div>
+
         @foreach($products as $product)
         <div class="card">
             <a href="{{ route('item',['id' => $product->id]) }}">
