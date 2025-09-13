@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Season;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -20,15 +21,21 @@ class ItemController extends Controller
     public function item(string $id)
     {
         //itemを検索
-        //$item = Product::find($id);
         $item = Product::with('seasons')->findOrFail($id);
         $seasons = Season::all();
         return view('item', compact('item', 'seasons'));
     }
-    
-    //パラメータ取得
+
+    //登録画面表示
+    public function register()
+    {
+        return view('register');
+    }
+
+    //商品登録処理
     public function store(Request $request)
     {
+        //フォームデータ受け取り
         $parameters = $request->only([
             'name',
             'price',
@@ -36,18 +43,45 @@ class ItemController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $path = $file->store('public/img');
+            // アップロードされた元のファイル名を取得
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = $originalName;
+            $counter = 1;
+
+            // 指定したディレクトリに同じファイル名が存在するかチェック
+            while (Storage::disk('public')->exists('img/' . $filename)) {
+                // ファイル名と拡張子を分割
+                $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+                $baseName = pathinfo($originalName, PATHINFO_FILENAME);
+
+                // "コピー(数字)" を追加してファイル名を再生成
+                $filename = "{$baseName}_({$counter}).{$extension}";
+                $counter++;
+            }
+            // `storeAs`メソッドでファイル名を指定して保存
+            $path = $request->file('image')->storeAs('img', $filename, 'public');
+
+            //最終的なファイル名
             $filename = basename($path);
-            $parameters['image'] = 'img/' . $filename;
+
+            //配列[image]を追加
+            $parameters['image'] = $filename;
+
         }
 
-        // Item::create($parameters);
+        //テーブル登録処理
+        // `$item`変数に作成したモデルインスタンスを格納
+        $item = Product::create($parameters);
 
-        return redirect('/');
+        //中間テーブルの更新
+        if ($request->has('season')) {
+            $item->seasons()->sync($request->input('season'));
+        }
+
+        return redirect()->route('products.index')->with('success', '商品が登録されました。');
     }
 
-    // コントローラのupdate例
+    //データのupdate
     public function update(Request $request, $id)
     {
         $item = Product::findOrFail($id);
@@ -58,6 +92,7 @@ class ItemController extends Controller
 
         return redirect()->route('item', $id)->with('success', '商品を更新しました');
     }
+
     //データの削除
     public function destroy(string $id)
     {
@@ -68,7 +103,7 @@ class ItemController extends Controller
         $item->delete();
 
         // 削除が完了したら、適切なページにリダイレクトする
-        return redirect()->route('products')->with('success', 'アイテムが削除されました。');
+        return redirect()->route('products.index')->with('success', 'アイテムが削除されました。');
     }
 
 }

@@ -13,8 +13,9 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/', [ItemController::class, 'index'])->name('products');
+Route::get('/', [ItemController::class, 'index'])->name('products.index');
 Route::get('/items/{id}', [ItemController::class, 'item'])->name('item');
-Route::post('/store', [ItemController::class, 'store'])->name('store');
 Route::put('/items/{id}', [ItemController::class, 'update'])->name('items.update');
 Route::delete('/items/{id}', [ItemController::class, 'destroy'])->name('items.destroy');
+Route::get('/register', [ItemController::class, 'register']);
+Route::post('/register', [ItemController::class, 'store'])->name('items.store');

@@ -10,7 +10,7 @@
 
 <div class="flex-item">
     <div class="item-link">
-        <a class="button-back" href="{{ route('products') }}">商品一覧</a>
+        <a class="button-back" href="{{ route('products.index') }}">商品一覧</a>
         <p>{{ $item->name }}</p>
     </div>
     <form class="item-edit" action="{{ route('items.update', $item->id) }}" method="POST" enctype="multipart/form-data">
@@ -55,7 +55,7 @@
                 </textarea>
             </div>
             <div class="item-bottom__flex">
-                <a class="button-back" href="{{ route('products') }}">戻る</a>
+                <a class="button-back" href="{{ route('products.index') }}">戻る</a>
                 <button type="submit" class="button-update">変更を保存</button>
             </div>
         </div>
