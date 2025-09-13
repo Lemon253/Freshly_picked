@@ -1,4 +1,11 @@
 @extends('layouts.app')
+<style>
+    svg.w-5.h-5 {
+        /*paginateメソッドの矢印の大きさ調整のために追加*/
+        width: 30px;
+        height: 30px;
+    }
+</style>
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
