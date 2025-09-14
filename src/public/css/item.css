@@ -1,6 +1,12 @@
 /* 全体のコンテナ */
-.item-container {
+.contents {
     padding: 20px;
+    background-color: #f7f7f7;
+}
+
+.item-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* 戻るボタンと商品名のセクション */
@@ -74,7 +80,6 @@
 
 .form-ttl {
     display: block;
-    font-weight: bold;
     margin-bottom: 5px;
 }
 
@@ -99,10 +104,10 @@
     /* Flexboxを有効にする */
     align-items: center;
     /* 垂直方向の中央に揃える */
-    gap: 20px;
-    /* チェックボックス間の余白を設定 */
 }
-
+.season-1, .season-2, .season-3, .season-4 {
+    margin-right: 20px;
+}
 
 .item-season-group input[type="checkbox"] {
     margin-right: 0;
@@ -124,7 +129,7 @@
 
 .button-group {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 20px;
     margin-top: 20px;
 }
@@ -137,10 +142,12 @@
     color: #fff;
     cursor: pointer;
 }
-
 .button-back {
     background-color: #aaa;
+}
+.button-link {
     border: none;
+    text-decoration: none;
 }
 
 .button-update {
