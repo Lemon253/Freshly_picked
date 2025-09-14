@@ -1,79 +1,119 @@
+/* 全体レイアウト */
 .flex__item {
-    /* display: flex; */
-    /* margin: 30px 0px 0px 0px; */
-    /* justify-content: space-between; */
     width: 100%;
+    height: 100%;
+    background-color: #f7f7f7;
+    padding: 0 30px 0 30px;
 }
 
 .flex__header {
     display: flex;
-    margin: 50px 0px 0px 0px; 
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
-.contents {
+/* 親コンテナを追加してレイアウトを定義 */
+.main-container {
     display: flex;
+    margin-top: 20px;
 }
 
-.card {
-    margin: 30px 30px 0px 0px;
+/* 検索フォームのサイドバー */
+.contents__left {
+    width: 20%;
+    max-width: 250px;
+    /* サイドバーの幅を固定 */
+    border-radius: 8px;
+    margin: 0 20px 0 0;
+   
+}
+
+/* 検索フォームのスタイル */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-form__item-input,
+.search-form__item-select-sort,
+.search-form__button-submit {
     width: 100%;
-    height: 10%;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.search-form__button-submit {
+    background-color: #f5c800;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+.search-form-sort-ttl {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* 商品カードのリスト */
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* 商品カードのスタイル */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 5px 5px 0;
+    /* aspect-ratio: 1 / 1; */
+}
+
+.card__image {
+/* 画像をカードの上部に配置し、残りのスペースはコンテンツに割り当てる */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card__image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card__content {
-    padding: 15px 25px;
+    height: 30%;
+    padding: 10px;
+    /* コンテンツの高さを均等にする */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card__name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card__price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #888;
 }
 
 .card__content-common {
     display: flex;
     justify-content: space-between;
-}
-
-.card__ttl {
-    font-size: 18px;
-    margin-bottom: 30px;
-    font-weight: 400;
-}
-
-.card__price {
-    padding: 5px 10px;
-    background: #008888;
-    margin-bottom: 15px;
-    color: #fff;
-    font-size: 14px;
-}
-
-.card__buy {
-    padding: 5px 10px;
-    background: red;
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-.card__link {
-    color: #fff;
-    text-decoration: none;
-}
-
-.tag {
-    font-size: 14px;
-    text-align: right;
-}
-
-.card__tag {
-    display: inline-block;
-    color: #008888;
-}
-
-.card__date {
-    display: inline-block;
-    margin-left: 20px;
-    color: #888888;
+    align-items: flex-end;
 }
