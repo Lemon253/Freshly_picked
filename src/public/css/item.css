@@ -4,6 +4,10 @@
     background-color: #f7f7f7;
 }
 
+.link-back {
+    text-decoration: none;
+}
+
 .item-container {
     max-width: 800px;
     margin: 0 auto;
@@ -20,7 +24,7 @@
 /* メインコンテンツ（画像とフォーム）を横並びに配置 */
 .main-content-flex {
     display: flex;
-    gap: 40px;
+    gap: 20px;
 }
 
 /* 左側の画像セクション */
@@ -34,11 +38,9 @@
 
 .item-image-container {
     width: 100%;
-    aspect-ratio: 1 / 1;
     overflow: hidden;
     margin-bottom: 15px;
     border: 1px solid #ddd;
-    border-radius: 8px;
 }
 
 .item-image-container img {
@@ -58,6 +60,7 @@
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 15px;
 }
 
 .file-input {
@@ -67,20 +70,20 @@
 .file-name-display {
     color: #555;
     font-size: 14px;
+    margin-bottom: 15px;
 }
 
 /* 右側のフォームセクション */
 .item-right {
-    flex-grow: 1;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
 
-.form-group {
-    margin-bottom: 15px;
-}
 
 .form-ttl {
     display: block;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
 }
 
 .form-group input[type="text"],
@@ -124,7 +127,7 @@
 
 /* 下部のボタンと説明のセクション */
 .item-bottom {
-    margin-top: 30px;
+    margin: 0;
 }
 
 .button-group {
@@ -138,8 +141,11 @@
 .button-update {
     padding: 10px 20px;
     border-radius: 5px;
+    width: 150px;
     text-decoration: none;
-    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    color: black;
     cursor: pointer;
 }
 .button-back {
@@ -155,8 +161,33 @@
     border: none;
 }
 
+.form-delete {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .button-delete {
-    background-color: transparent;
+    /* ボタンの基本スタイルをリセット */
+    background: none;
     border: none;
     cursor: pointer;
+
+    /* サイズを指定 */
+    width: 30px;
+    height: 30px;
+
+    /* 背景画像としてアイコンを指定 */
+    background-image: url('/storage/img/delete.png');
+    background-size: cover;
+    /* ボタンのサイズに合わせて画像を拡大・縮小 */
+    background-position: center;
+    /* 画像を中央に配置 */
+    background-repeat: no-repeat;
+    /* 画像の繰り返しをオフに */
+
+    /* アクセシビリティのためにテキストを隠す */
+    text-indent: -9999px;
+    /* テキストを画面外に移動 */
+    overflow: hidden;
+    /* 移動したテキストを非表示にする */
 }

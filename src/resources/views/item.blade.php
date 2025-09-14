@@ -21,16 +21,6 @@
                     <div class="item-image-container">
                         <img src="{{ asset('storage/img/' . $item->image)}}" alt="商品画像" />
                     </div>
-                    <div class="select-button-container">
-                        <label for="image" class="file-label">ファイルを選択</label>
-                        <input type="file" class="file-input" id="image" name="image">
-                        <span class="file-name-display">{{ $item->image }}</span>
-                    </div>
-                    <div class="form__error">
-                        @error('image')
-                        {{ $message }}
-                        @enderror
-                    </div>
                 </div>
 
                 <div class="item-right">
@@ -77,6 +67,17 @@
             </div>
 
             <div class="item-bottom">
+                <div class="select-button-container">
+                    <label for="image" class="file-label">ファイルを選択</label>
+                    <input type="file" class="file-input" id="image" name="image">
+                    <span class="file-name-display">{{ $item->image }}</span>
+                </div>
+                <div class="form__error">
+                    @error('image')
+                    {{ $message }}
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <p class="form-ttl">商品説明</p>
                     <textarea id="description" name="description">{{ old('description', $item->description) }}</textarea>
@@ -93,12 +94,13 @@
                 </div>
             </div>
         </form>
-
-        <form action="{{ route('items.destroy', $item->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="button-delete">削除</button>
-        </form>
+        <div class="form-delete">
+            <form action="{{ route('items.destroy', $item->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="button-delete">削除</button>
+            </form>
+        </div>
     </div>
 </div>
 
