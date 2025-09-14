@@ -52,9 +52,8 @@
 
 <!-- ER図内容OK -->
 ## ER図
-![ER図](contact-form.png)
+![ER](ER_mogitate.png)
 
-<!-- 解答では、開発環境とphpMyadminだけだったが、自身のもののほうが分割されていて見やすいと感じるがどうか -->
 ## URL
 * お問い合わせ入力フォーム：http://localhost/
 * ユーザー登録画面：http://localhost/register
