@@ -36,7 +36,8 @@ class ItemController extends Controller
     //登録画面表示
     public function register()
     {
-        return view('register');
+        $seasons = Season::all(); // 全ての季節データを取得
+        return view('register' , compact('seasons'));
     }
 
     //商品登録処理
@@ -81,9 +82,7 @@ class ItemController extends Controller
         $item = Product::create($parameters);
 
         //中間テーブルの更新
-        if ($request->has('season')) {
-            $item->seasons()->sync($request->input('season'));
-        }
+            $item->seasons()->sync($request->input('seasons', []));
 
         return redirect()->route('products.index')->with('success', '商品が登録されました。');
     }

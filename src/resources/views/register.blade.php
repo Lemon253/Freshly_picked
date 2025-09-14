@@ -42,13 +42,13 @@
 
             <div class="form__contents">
                 <p class="form__ttl">季節<span class="required-mark">必須</span><span class="required-mark--text">複数選択可</span></p>
-                <input type="checkbox" name="seasons[]" value="1" id="season-1" {{ in_array(1, old('seasons', [])) ? 'checked' : '' }}>
+                <input type="checkbox" name="seasons[]" value="1" id="season-1" {{ in_array('1', old('seasons', [])) ? 'checked' : '' }}>
                 <label for="season-1" class="checkbox-text">春</label>
-                <input type="checkbox" name="seasons[]" value="2" id="season-2" {{ in_array(2, old('seasons', [])) ? 'checked' : '' }}>
+                <input type="checkbox" name="seasons[]" value="2" id="season-2" {{ in_array('2', old('seasons', [])) ? 'checked' : '' }}>
                 <label for="season-2" class="checkbox-text">夏</label>
-                <input type="checkbox" name="seasons[]" value="3" id="season-3" {{ in_array(3, old('seasons', [])) ? 'checked' : '' }}>
+                <input type="checkbox" name="seasons[]" value="3" id="season-3" {{ in_array('3', old('seasons', [])) ? 'checked' : '' }}>
                 <label for="season-3" class="checkbox-text">秋</label>
-                <input type="checkbox" name="seasons[]" value="4" id="season-4" {{ in_array(4, old('seasons', [])) ? 'checked' : '' }}>
+                <input type="checkbox" name="seasons[]" value="4" id="season-4" {{ in_array('4', old('seasons', [])) ? 'checked' : '' }}>
                 <label for="season-4" class="checkbox-text">冬</label>
             </div>
             <div class="form__error">

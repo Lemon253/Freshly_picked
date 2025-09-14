@@ -4,6 +4,7 @@
 
 **Dockerビルド**
 1. git clone git@github.com:Lemon253/Freshly_picked.git
+2. cd Freshly_picked
 2. Docker Desktopを立ち上げる
 3. docker compose up -d --build
 
@@ -24,6 +25,8 @@
 `php artisan migrate`
 7. シーディングの実行
 `php artisan db:seed`
+8. ストレージ参照許可
+`php artisan storage:link`
 
 **マイグレーション**
 * php artisan migrate

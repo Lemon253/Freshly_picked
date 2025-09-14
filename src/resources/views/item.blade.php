@@ -55,7 +55,6 @@
                                 {{ in_array($season->id, old('seasons', [])) || $item->seasons->contains($season->id) ? 'checked' : '' }}>
                             <label for="season-{{ $season->id }}" class="season-{{ $season->id }}">{{ $season->name }}</label>
                             @endforeach
-
                         </div>
                     </div>
                     <div class="form__error">
