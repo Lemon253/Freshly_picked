@@ -1,0 +1,129 @@
+.contents {
+    background-color:#f7f7f7 ;
+}
+.register {
+width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.register__ttl {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    /* フォーム内の要素を縦に並べる */
+}
+
+.form__contents {
+    position: relative;
+    /* ラベルの「必須」マークを配置するための基準 */
+}
+
+.form__ttl {
+    display: block;
+    /* ラベルを独立したブロック要素にする */
+    margin-bottom: 8px;
+}
+
+/* 入力欄とテキストエリア */
+.form__contents input[type="text"],
+.form__contents input[type="number"],
+.form__contents textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* パディングを幅に含める */
+}
+
+.form__contents input[type="file"] {
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 4px;
+    /* パディングを幅に含める */
+}
+
+.form__contents textarea {
+    height: 120px;
+    resize: vertical;
+    /* 縦方向のみリサイズ可能にする */
+}
+
+/* 「必須」マークのスタイル */
+.required-mark {
+    font-size: 14px;
+    color: #fff;
+    background-color: red;
+    padding: 2px 6px;
+    margin-left: 8px;
+
+}
+
+.checkbox-text {
+    margin-right: 30px;
+}
+.required-mark--text {
+    font-size: 12px;
+    color: red;
+    margin-left: 8px;
+}
+
+/* 季節のチェックボックスを横並びにする */
+.form__contents-seasons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* チェックボックス間の余白 */
+}
+
+.form__contents.button-group {
+    display: flex;
+    justify-content: flex-end;
+    /* ボタンを右端に寄せる */
+    gap: 15px;
+    /* ボタン間の余白 */
+    margin-top: 20px;
+}
+
+.button-back,
+.button-register {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button-back {
+    background-color: #ddd;
+    color: #555;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    padding: 0 70px;
+}
+
+.button-register {
+    background-color: #ffc107;
+    color: #333;
+    padding: 12px 70px;
+}
+
+.form__error {
+    color: red;
+}
+
+.form__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
