@@ -1,23 +1,155 @@
-.flex-item {
-    display: flex;
-    margin: 20px 0px 0px 0px;
+/* 全体のコンテナ */
+.item-container {
+    padding: 20px;
 }
 
-.item__image {
-    margin: 0px 20px;
-    max-width: 50%;
+/* 戻るボタンと商品名のセクション */
+.item-link-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* メインコンテンツ（画像とフォーム）を横並びに配置 */
+.main-content-flex {
+    display: flex;
+    gap: 40px;
+}
+
+/* 左側の画像セクション */
+.item-left {
+    flex-basis: 400px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
-.item__right {
+.item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.select-button-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-.item-content {
-    display: inline-block;
-    max-width: 50%;
-    margin-bottom: 10px;
-    margin-left: 30px;
+.file-label {
+    background-color: #eee;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-name-display {
+    color: #555;
+    font-size: 14px;
+}
+
+/* 右側のフォームセクション */
+.item-right {
+    flex-grow: 1;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-ttl {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-group__item-season {
+    margin-bottom: 15px;
+    /* 元のCSSのまま */
+    display: flex;
+    /* Flexboxを有効にする */
+    align-items: center;
+    /* 垂直方向の中央に揃える */
+    gap: 20px;
+    /* チェックボックス間の余白を設定 */
+}
+
+
+.item-season-group input[type="checkbox"] {
+    margin-right: 0;
+    /* 元の余白を削除 */
+    transform: scale(1.2);
+    /* チェックボックスを少し大きくする */
+}
+
+.form__error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* 下部のボタンと説明のセクション */
+.item-bottom {
+    margin-top: 30px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.button-back,
+.button-update {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-back {
+    background-color: #aaa;
+    border: none;
+}
+
+.button-update {
+    background-color: #f5c800;
+    border: none;
+}
+
+.button-delete {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
