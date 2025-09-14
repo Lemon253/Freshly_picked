@@ -8,8 +8,29 @@
 
 .flex__header {
     display: flex;
+    padding-top: 40px;
     justify-content: space-between;
     align-items: flex-end;
+}
+
+.flex__search-ttl,
+.current-search-term {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.create-button__link {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ffa929;
+    font-weight: bold;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 /* 親コンテナを追加してレイアウトを定義 */
@@ -35,7 +56,16 @@
     gap: 15px;
 }
 
-.search-form__item-input,
+.search-form__item-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+
 .search-form__item-select-sort,
 .search-form__button-submit {
     width: 100%;
@@ -58,6 +88,7 @@
     font-weight: bold;
 }
 
+
 /* 商品カードのリスト */
 .card-list {
     display: flex;
@@ -74,7 +105,7 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    margin: 0 5px 5px 0;
+    margin: 0 10px 10px 0;
     /* aspect-ratio: 1 / 1; */
 }
 
@@ -101,15 +132,8 @@
     justify-content: space-between;
 }
 
-.card__name {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.card__price {
+.card__name,.card__price {
     font-size: 14px;
-    font-weight: bold;
-    color: #888;
 }
 
 .card__content-common {

@@ -14,24 +14,28 @@
 @section('content')
 <div class="flex__item">
     <div class="flex__header">
-        <h1 class="flex__search-ttl">商品一覧</h1>
+        @if(session('searches.search'))
+        <p class="flex__search-ttl"><span class="current-search-term">”{{ session('searches.search') }}”の</span>商品一覧</p>
+        @else
+        <p class="flex__search-ttl">商品一覧</p>
         <div class="flex__header__create-button">
             <a href="/register" class="create-button__link">+商品を追加</a>
         </div>
+        @endif
     </div>
 
     <div class="main-container">
         <div class="contents__left">
             <form class="search-form" action="{{ route('items.search') }}" method="get">
                 <div class="search-form__item">
-                    <input class="search-form__item-input" type="text" name="search" @if(session('searches.search')) value="{{ session('searches.search') }}" @endif />
+                    <input class="search-form__item-input" type="text" name="search" placeholder="商品名で検索" @if(session('searches.search')) value="{{ session('searches.search') }}" @endif />
                     <div class="search-form__button">
                         <button class="search-form__button-submit" type="submit" name="submit" value="submit">検索</button>
                     </div>
 
                     <h3 class="search-form-sort-ttl">価格順で表示</h3>
                     <select class="search-form__item-select-sort" name="sort">
-                        <option value="" @if(request('sort')=='' ) selected @endif>価格で並べ替え</option>
+                        <option value="" class="gray" disabled selected @if(request('sort')=='' ) selected @endif>価格で並べ替え</option>
                         <option value="asc" @if(request('sort')=='asc' ) selected @endif>低い順に表示</option>
                         <option value="desc" @if(request('sort')=='desc' ) selected @endif>高い順に表示</option>
                     </select>

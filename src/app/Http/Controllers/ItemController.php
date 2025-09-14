@@ -15,6 +15,10 @@ class ItemController extends Controller
     //
     public function index()
     {
+
+        // 検索フォームのセッションをリセット
+        session()->forget('searches');
+
         // 1ページ6件ずつ表示
         $products = Product::with('seasons')->paginate(6);
         return view('index', compact('products'));
@@ -127,6 +131,16 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
+        // 検索クエリが存在する場合のみセッションに保存
+        if ($request->has('search')) {
+            session(['searches.search' => $request->input('search')]);
+        }
+
+        // 並べ替え順が存在する場合のみセッションに保存
+        if ($request->has('sort')) {
+            session(['searches.sort' => $request->input('sort')]);
+        }
+
         // クエリビルダを開始
         $products = Product::query();
 
