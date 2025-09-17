@@ -40,6 +40,18 @@
                         <option value="desc" @if(request('sort')=='desc' ) selected @endif>高い順に表示</option>
                     </select>
                 </div>
+                @if(request('sort'))
+                <div style="border: 1px solid #ddd; padding: 10px; border-radius: 20px; width: 158px;">
+                    @if(request('sort') == 'asc')
+                    低い順に表示
+                    @elseif(request('sort') == 'desc')
+                    高い順に表示
+                    @endif
+                    <span style="float: right; cursor: pointer;">
+                        <a href="{{ route('products.index') }}" style="text-decoration: none; color: #333;">x</a>
+                    </span>
+                </div>
+                @endif
             </form>
         </div>
 
