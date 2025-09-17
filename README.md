@@ -54,7 +54,7 @@
 
 <!-- ER図内容OK -->
 ## ER図
-![ER](https://github.com/Lemon253/Freshly_picked/blob/main/ER%EF%BC%BFmogitate.png)
+![ER](https://github.com/Lemon253/Freshly_picked/blob/main/ER_mogitate.png)
 
 ## URL
 * 商品一覧：http://localhost/products
