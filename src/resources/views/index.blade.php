@@ -74,6 +74,8 @@
             @endforeach
         </div>
     </div>
-    {{ $products->links() }}
+    <div class="pagination__flex">
+        {{ $products->links('vendor.pagination.default') }}
+    </div>
 </div>
 @endsection
