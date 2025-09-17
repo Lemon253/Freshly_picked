@@ -119,9 +119,11 @@ class ItemController extends Controller
             //配列[image]を追加
             $updateData['image'] = $filename;
 
-            // データベースを一度だけ更新
-            $item->update($updateData);
         }
+
+        // データベースを一度だけ更新
+        $item->update($updateData);
+
         // 季節の紐付けを更新
         $item->seasons()->sync($request->input('seasons', []));
 

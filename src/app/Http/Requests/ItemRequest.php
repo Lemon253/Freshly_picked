@@ -23,15 +23,26 @@ class ItemRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        // リクエストのルート名を取得
+        $routeName = $this->route()->getName();
+
+        // 登録（store）時と編集（update）時でルールを切り替える
+        $rules = [
             'name' => ['required'],
             'price' => ['required', 'integer', 'min:0', 'max:10000'],
             'seasons' => ['required', 'array', 'min:1'],
             'description' => ['required', 'max:120'],
-            'image' => ['required', 'mimes:png,jpeg'],
-
         ];
+
+        if ($routeName == 'items.store') {
+            // 登録時のみimageを必須にする
+            $rules['image'] = ['required', 'mimes:png,jpeg'];
+        } elseif ($routeName == 'items.update') {
+            // 編集時、画像がアップロードされた場合のみバリデーションを適用
+            $rules['image'] = ['nullable', 'mimes:png,jpeg'];
+        }
+
+        return $rules;
     }
 
     public function messages()
