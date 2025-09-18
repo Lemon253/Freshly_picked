@@ -67,7 +67,7 @@
 
 
 .search-form__item-select-sort,
-.search-form__button-submit {
+.search-form__button-search {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -75,7 +75,7 @@
     box-sizing: border-box;
 }
 
-.search-form__button-submit {
+.search-form__button-search {
     background-color: #f5c800;
     font-weight: bold;
     color: #333;

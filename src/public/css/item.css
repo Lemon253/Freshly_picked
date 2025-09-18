@@ -171,6 +171,9 @@
     background: none;
     border: none;
     cursor: pointer;
+    position:relative;
+    float: right;
+    bottom: 35px;
 
     /* サイズを指定 */
     width: 30px;

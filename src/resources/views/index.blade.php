@@ -30,11 +30,11 @@
                 <div class="search-form__item">
                     <input class="search-form__item-input" type="text" name="search" placeholder="商品名で検索" @if(session('searches.search')) value="{{ session('searches.search') }}" @endif />
                     <div class="search-form__button">
-                        <button class="search-form__button-submit" type="submit" name="submit" value="submit">検索</button>
+                        <button class="search-form__button-search" type="submit" name="search-button" value="submit">検索</button>
                     </div>
 
                     <h3 class="search-form-sort-ttl">価格順で表示</h3>
-                    <select class="search-form__item-select-sort" name="sort">
+                    <select class="search-form__item-select-sort" name="sort" id="sort-select">
                         <option value="" class="gray" disabled selected @if(request('sort')=='' ) selected @endif>価格で並べ替え</option>
                         <option value="asc" @if(request('sort')=='asc' ) selected @endif>低い順に表示</option>
                         <option value="desc" @if(request('sort')=='desc' ) selected @endif>高い順に表示</option>
@@ -78,4 +78,8 @@
         {{ $products->links('vendor.pagination.default') }}
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('/js/index.js') }}"></script>
 @endsection
