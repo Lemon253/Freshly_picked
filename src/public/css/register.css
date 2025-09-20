@@ -22,7 +22,7 @@ width: 100%;
 
 .form__contents {
     position: relative;
-    /* ラベルの「必須」マークを配置するための基準 */
+    padding-bottom: 10px;
 }
 
 .form__ttl {
@@ -64,6 +64,50 @@ width: 100%;
     padding: 2px 6px;
     margin-left: 8px;
 
+}
+
+.item-image-container {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    /* border: 1px solid #ddd; */
+}
+
+
+.item-image-container img {
+    display: none;
+}
+
+
+/* コンテナが表示されているときに画像に適用されるスタイル */
+.is-visible img {
+    display: block;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+.select-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-label {
+    background-color: #eee;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-name-display {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 15px;
 }
 
 .checkbox-text {
