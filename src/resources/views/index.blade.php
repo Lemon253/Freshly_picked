@@ -26,9 +26,9 @@
 
     <div class="main-container">
         <div class="contents__left">
-            <form class="search-form" action="{{ route('items.search') }}" method="get">
+            <form class="search-form" action="{{ route('items.search') }}" method="get" data-search-term="{{ session('searches.search') }}">
                 <div class="search-form__item">
-                    <input class="search-form__item-input" type="text" name="search" placeholder="商品名で検索" @if(session('searches.search')) value="{{ session('searches.search') }}" @endif />
+                    <input class="search-form__item-input" type="text" name="search" id="search-input" placeholder="商品名で検索" @if(session('searches.search')) value="{{ session('searches.search') }}" @endif />
                     <div class="search-form__button">
                         <button class="search-form__button-search" type="submit" name="search-button" value="submit">検索</button>
                     </div>
@@ -48,7 +48,11 @@
                     高い順に表示
                     @endif
                     <span style="float: right; cursor: pointer;">
+                        @if(session('searches.search'))
+                        <a href="{{ route('items.search', ['search' => session('searches.search')]) }}" style="text-decoration: none; color: #333;">x</a>
+                        @else
                         <a href="{{ route('products.index') }}" style="text-decoration: none; color: #333;">x</a>
+                        @endif
                     </span>
                 </div>
                 @endif
