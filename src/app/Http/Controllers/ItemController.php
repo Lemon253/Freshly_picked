@@ -127,7 +127,7 @@ class ItemController extends Controller
         // 季節の紐付けを更新
         $item->seasons()->sync($request->input('seasons', []));
 
-        return redirect()->route('item', $id)->with('success', '商品を更新しました');
+        return redirect()->route('products.index')->with('success', '商品を更新しました');
     }
 
     public function search(Request $request)
